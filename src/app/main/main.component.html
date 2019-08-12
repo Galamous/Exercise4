@@ -1,0 +1,25 @@
+<header [ngStyle] = "{ backgroundColor : 'red' }" [ngClass] = "{ class: property==='Car' }"><h1>Paras Singh</h1></header>
+<h3><p>{{ property }}</p></h3>
+<label>How are you travelling?
+    <input value={{property}} readonly>
+</label>
+
+<p *ngIf="(property | uppercase) === 'CAR'; else temp">30 minute commute by car</p>
+    <ng-template #temp>
+        <p>Bus and Train-1 hour commute</p>
+        <ul>
+            <li *ngFor="let item of schedule; let i=index">
+                <div>
+                    <strong>Route:</strong> {{item.route}}<br>
+                    <strong>Departure Time:</strong> {{item.depart}}<br>
+                    <strong>Arrival Time:</strong> {{item.arrive}}<br>
+                </div>
+                <br>
+            </li>
+        </ul>
+    </ng-template>
+
+<p id='btns'>
+    <button (click) ="property = arrayProp[0]">{{ arrayProp[0] }}</button> /
+    <button (click) ="property = arrayProp[1]">{{ arrayProp[1] }}</button>
+</p>
